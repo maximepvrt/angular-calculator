@@ -1,0 +1,27 @@
+{
+  "name": "angular-calculator",
+  "version": "0.1.0",
+  "homepage": "https://maximepvrt.github.io/angular-calculator",
+  "authors": [
+    "maximepvrt <maximepvrt@gmail.com>"
+  ],
+  "description": "An AngularJS module for create a dynamic calculator",
+  "main": "dist/angular-calculator.min.js",
+  "keywords": [
+    "angular calculator",
+    "angular.js",
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "~1.x"
+  }
+}

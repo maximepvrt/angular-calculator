@@ -1,0 +1,36 @@
+{
+  "name": "angular-calculator",
+  "version": "0.1.0",
+  "description": "An AngularJS module for create a dynamic calculator",
+  "main": "dist/angular-calculator.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maximepvrt/angular-calculator"
+  },
+  "keywords": [
+    "angular calculator",
+    "angular.js",
+    "angular"
+  ],
+  "author": "maximepvrt <maximepvrt@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maximepvrt/angular-calculator/issues"
+  },
+  "homepage": "https://maximepvrt.github.io/angular-calculator",
+  "dependencies": {
+    "angular": "~1.x"
+  },
+  "files": ["dist"],
+  "scripts": {
+      "build": "glup"
+  },
+  "devDependencies": {
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-uglify": "^1.4.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-rename": "^1.2.2",
+    "uglify-save-license": "^0.4.1"
+  }
+}
