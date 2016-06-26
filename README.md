@@ -34,7 +34,82 @@ or you may download the [latest release](https://github.com/maximepvrt/angular-c
 ```javascript
 var app = angular.module('myModule', ['angular-calculator']);
 ```
+## Configuration
 
+Param objects
+```javascript
+[
+   {
+      "id":"price_euro",
+      "defaultValue": 100,
+      "min":0,
+      "max":1000,
+      "step":100,
+      "unit":"€",
+      "dynamicUnit":null,
+      "label":"Price",
+      "rules":[
+         {
+            "currency":"euro"
+         }
+      ],
+      "name":"price"
+   },
+   {
+      "id":"price_dollar",
+      "defaultValue":200,
+      "min":0,
+      "max":1000,
+      "step":100,
+      "unit":"$",
+      "dynamicUnit":null,
+      "label":"Price",
+      "rules":[
+         {
+            "currency":"usd"
+         }
+      ],
+      "name":"price"
+   },
+   {
+      "id":"tax",
+      "defaultValue":7.5,
+      "min":0,
+      "max":25,
+      "step":0.5,
+      "unit":"€",
+      "label":"Tax",
+      "rules":[
+         {
+            "currency":"euro",
+            "country": "fra"
+         }
+      ],
+      "name":"tax"
+   },
+   {
+      "id":"dynamic_price",
+      "defaultValue":5,
+      "min":0,
+      "max":25,
+      "step":0.5,
+      "unit":null,
+      "dynamicUnit":"currencies",
+      "label":"Average consumption",
+      "name":"dynamic_price"
+   },
+]
+```
+
+init params
+```javascript
+app.controller('myController', ['$scope', '$calculator',
+    function myController($scope, $calculator) {
+        $calculator.setParams(paramsArray);
+        $calculator.setParam(paramId, paramObject);
+    }
+]);
+```
 
 ## Development
 
