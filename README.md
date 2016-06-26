@@ -1,5 +1,5 @@
-Angular Google GApi 
-=======================
+Angular Calculator
+==================
 [![Travis](https://img.shields.io/travis/maximepvrt/angular-calculator.svg)](https://travis-ci.org/maximepvrt/angular-calculator)
 [![David](https://img.shields.io/david/maximepvrt/angular-calculator.svg)]()
 [![npm](https://img.shields.io/npm/v/angular-calculator.svg)](https://www.npmjs.com/package/angular-calculator) [![Bower](https://img.shields.io/bower/v/angular-calculator.svg)](http://bower.io/search/?q=angular-calculator)
