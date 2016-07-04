@@ -10,6 +10,10 @@ An AngularJS module for create a dynamic calculator
 
 - [Angular.js](http://angularjs.org)
 
+## Exemple
+
+- [http://maximepvrt.github.io/angular-calculator](http://maximepvrt.github.io/angular-calculator)
+
 ## Installation
 ### Add library
 This module is available as bower package, install it with this command:
