@@ -1,7 +1,6 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,62 +8,129 @@
     <title>Angular Calculator</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/bootstrap.css">
 
     <!-- Custom styles for this template -->
-    <link href="jumbotron-narrow.css" rel="stylesheet">
+    <link href="assets/jumbotron-narrow.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
+</head>
 
-  <body ng-app="angular-calculator-exemple" ng-controller="myController">
+<body ng-app="angular-calculator-exemple" ng-controller="myController">
 
-    <div class="container">
-      <div class="header clearfix">
+<div class="container">
+    <div class="header clearfix">
         <h3 class="text-muted">Angular Calculator</h3>
-      </div>
+    </div>
 
-      <div class="jumbotron">
-        <h1>Jumbotron heading</h1>
-        <p class="lead">Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-        <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
-      </div>
+    <div class="jumbotron">
+        <h1>Calculateur de rentabilitée</h1>
+        <p class="lead">Exemple de calculateur réalisé avec angular-calculator</p>
+        <div class="row">
+            <div class="col-sm-6" ng-repeat="c in calculator.data.units.currency">
+                <div class="radio">
+                    <input type="radio" id="c-{{c.id}}" name="c" value="{{c.id}}"
+                           ng-model="config.currency">
+                    <label for="c-{{c.id}}" ng-bind="c.label + ' ( ' + c.sign + ' )'"></label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-sm-6">
+                <label>Prestation de développement</label>
+                <select class="form-control" ng-model="config.dev"
+                        ng-options="a.v as a.label for a in [{label: 'Oui', v: true}, {label: 'Non', v: false}]"></select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Prestation de design</label>
+                <select class="form-control" ng-model="config.design"
+                        ng-options="a.v as a.label for a in [{label: 'Oui', v: true}, {label: 'Non', v: false}]"></select>
+            </div>
+            <div class="form-group col-sm-6">
+                <label>Prestation d'integration</label>
+                <select class="form-control" ng-model="config.integration"
+                        ng-options="a.v as a.label for a in [{label: 'Oui', v: true}, {label: 'Non', v: false}]"></select>
+            </div>
+        </div>
+    </div>
 
-      <div class="row marketing">
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
+    <div class="row">
+        <div class="col-md-6">
+            <div ng-repeat="param in params track by param.id" class="form-horizontal">
+                <label for="{{param.name}}" class="control-label" ng-bind="param.label"></label>
+                <slider
+                        floor="{{param.min}}"
+                        ceiling="{{param.max}}"
+                        step="{{param.step}}"
+                        precision="10"
+                        ng-model="param.value"
+                ></slider>
 
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+                <div class="input-group">
+                    <input type="number" class="form-control" name="{{param.name}}"
+                           id="{{param.name}}"
+                           min="{{param.min}}" max="{{param.max}}" step="{{param.step}}"
+                           required
+                           ng-model="param.value"
+                    >
+                    <div class="input-group-addon" ng-bind="param.unit"></div>
+                </div>
+            </div>
         </div>
 
-        <div class="col-lg-6">
-          <h4>Subheading</h4>
-          <p>Donec id elit non mi porta gravida at eget metus. Maecenas faucibus mollis interdum.</p>
-
-          <h4>Subheading</h4>
-          <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras mattis consectetur purus sit amet fermentum.</p>
-
-          <h4>Subheading</h4>
-          <p>Maecenas sed diam eget risus varius blandit sit amet non magna.</p>
+        <div class="col-md-6">
+            <table class="table table-bordered table-striped result-table">
+                <thead>
+                <tr>
+                    <th colspan="2">Marges</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Marge Design</td>
+                    <td><span
+                            ng-bind-template="{{values.design | round : 2}} {{calculator.currentUnit('currency').sign}}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Marge Intégration</td>
+                    <td><span
+                            ng-bind-template="{{values.integration | round : 2}} {{calculator.currentUnit('currency').sign}}"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Marge Développement</td>
+                    <td><span
+                            ng-bind-template="{{values.dev | round : 2}} {{calculator.currentUnit('currency').sign}}"></span>
+                    </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                    <td>
+                        <strong class="text-uppercase">Marge totale</strong>
+                    </td>
+                    <td>
+                        <span ng-bind-template="{{values.total | round : 2 }} {{calculator.currentUnit('currency').sign}}"></span>
+                    </td>
+                </tr>
+                </tfoot>
+            </table>
         </div>
-      </div>
+    </div>
 
-      <footer class="footer">
-        <p>&copy; 2015 Maxime Pauvert</p>
-      </footer>
+    <footer class="footer">
+        <p>&copy; 2016 Maxime Pauvert</p>
+    </footer>
 
-    </div> <!-- /container -->
-  </body>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-  <script src="https://rawgit.com/maximepvrt/angular-calculator/master/dist/angular-calculator.js"></script>
-  <script src="app.js"></script>
+</div> <!-- /container -->
+</body>
+<script src="assets/angular.js"></script>
+<script src="assets/slider.js"></script>
+<script src="assets/angular-calculator.js"></script>
+<script src="app.js"></script>
 </html>
