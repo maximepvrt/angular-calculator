@@ -4,7 +4,7 @@ Angular Calculator
 [![David](https://img.shields.io/david/maximepvrt/angular-calculator.svg)]()
 [![npm](https://img.shields.io/npm/v/angular-calculator.svg)](https://www.npmjs.com/package/angular-calculator) [![Bower](https://img.shields.io/bower/v/angular-calculator.svg)](http://bower.io/search/?q=angular-calculator)
 
-An AngularJS module for create a dynamic calculator
+An AngularJS module for creating a dynamic calculator
 
 ## Requirements
 
@@ -117,6 +117,6 @@ app.controller('myController', ['$scope', '$calculator',
 
 ## Development
 
-Gulp is used to minify angular-google-gapi.js (using Uglify). Execute 'npm install' (requires Node and NPM) to install the required packages.
+Gulp is used to minify angular-calculator.js (using Uglify). Execute 'npm install' (requires Node and NPM) to install the required packages.
 
-Run "gulp" to generate a minified version (angular-google-gapi.min.js). Note that this requires gulp to be installed globally (via 'npm install -g gulp').
+Run "gulp" to generate a minified version (angular-calculator.min.js). Note that this requires gulp to be installed globally (via 'npm install -g gulp').
